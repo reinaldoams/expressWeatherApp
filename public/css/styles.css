@@ -8,6 +8,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    text-align: center;
 }
 
 .main-content {
@@ -52,4 +54,10 @@ button {
     background-color: #888;
     color: white;
     padding: 8px;
+}
+
+#forecastImg {
+    border-radius: 30%;
+    width: 5rem;
+    padding: 1rem;
 }

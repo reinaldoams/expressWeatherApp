@@ -4,6 +4,8 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
+const forecastImg = document.querySelector('#forecastImg')
+const loadingImg = '../img/loading.svg'
 
 // messageOne.textContent = 'From JavaScript'
 
@@ -14,6 +16,7 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
+    forecastImg.src = loadingImg
 
     fetch(`/weather?address=${location}`).then((response) => {
         response.json().then((data) => {
@@ -22,6 +25,8 @@ weatherForm.addEventListener('submit', (e) => {
             } else {
                 messageOne.textContent = data.location
                 messageTwo.textContent = data.forecast
+                forecastImg.src = data.image
+                forecastImg.hidden = false
             }
         })
     })

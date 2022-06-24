@@ -44,7 +44,6 @@ app.get('/help', (req, res) => {
         variables: [{variable: 'WEATHERSTACK_KEY'}, {variable: 'MAPBOX_KEY'}],
         title: 'Help',
         name: 'Reinaldo Assis'
-
     })
 })
 
@@ -61,7 +60,8 @@ app.get('/weather', (req, res) => {
         }
         forecast(latitude, longitude, (err, forecastData) => {
             return res.send({
-                forecast: forecastData,
+                forecast: forecastData.text,
+                image: forecastData.image,
                 location,
                 address
             })
