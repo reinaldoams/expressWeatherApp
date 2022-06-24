@@ -5,9 +5,7 @@ const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 const forecastImg = document.querySelector('#forecastImg')
-const loadingImg = '../img/loading.svg'
-
-// messageOne.textContent = 'From JavaScript'
+const loadingImg = document.querySelector('#loadingImg')
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -16,10 +14,13 @@ weatherForm.addEventListener('submit', (e) => {
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
-    forecastImg.src = loadingImg
+    loadingImg.hidden = false
+    forecastImg.hidden = true
+    forecastImg.src = ''
 
     fetch(`/weather?address=${location}`).then((response) => {
         response.json().then((data) => {
+            loadingImg.hidden = true
             if (data.error) {
                 messageOne.textContent = data.error
             } else {

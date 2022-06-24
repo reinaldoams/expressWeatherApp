@@ -11,9 +11,11 @@
     <div class="main-content">
         {{>header}}
         <p>{{helpText}}</p>
+        <ul>
         {{#each variables}}
         <li>{{variable}}</li>
         {{/each}}
+        </ul>
     </div>
     {{>footer}}
 </body>
